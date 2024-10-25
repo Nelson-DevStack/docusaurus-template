@@ -2,8 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+    path: ["docusaurus-template/**"]
     # Review gh actions docs if you want to further define triggers, paths, etc
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
@@ -21,6 +21,7 @@ jobs:
           cache: yarn
 
       - name: Install dependencies
+        working-directory: docusaurus-template
         run: yarn install --frozen-lockfile
       - name: Build website
         run: yarn build
